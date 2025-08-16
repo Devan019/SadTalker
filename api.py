@@ -7,7 +7,14 @@ from typing import Any, List, Dict
 from fastapi import FastAPI
 from pydantic import BaseModel, Field
 import cloudinary.uploader
+from dotenv import load_dotenv
+load_dotenv()
 
+cloudinary.config(
+    cloud_name=os.getenv("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.getenv("CLOUDINARY_API_KEY"),
+    api_secret=os.getenv("CLOUDINARY_API_SECRET")
+)
 # from helpers.add_subtitle import burn_subtitles
 from src.utils.init_path import init_path
 from src.test_audio2coeff import Audio2Coeff  
